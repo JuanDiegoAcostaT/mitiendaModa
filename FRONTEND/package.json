@@ -1,0 +1,36 @@
+{
+  "name": "mitienda",
+  "version": "1.0.0",
+  "description": "A moda shop for women",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "npx vercel",
+    "build": "webpack --mode-production",
+    "start": "webpack-dev-server  --open  --mode development "
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "Juan Diego Acosta juandiegoat01@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "7.11.4",
+    "@babel/preset-env": "7.11.0",
+    "@babel/preset-react": "7.10.4",
+    "babel-loader": "8.1.0",
+    "html-loader": "1.3.0",
+    "html-webpack-plugin": "4.3.0",
+    "webpack": "4.44.1",
+    "webpack-cli": "3.3.12",
+    "webpack-dev-server": "3.11.0"
+  },
+  "dependencies": {
+    "@emotion/core": "10.0.35",
+    "@emotion/styled": "10.0.27",
+    "@reach/router": "1.3.4",
+    "emotion-theming": "^10.0.27",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-helmet": "6.1.0"
+  }
+}
