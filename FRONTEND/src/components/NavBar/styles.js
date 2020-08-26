@@ -1,20 +1,42 @@
 import styled from "@emotion/styled";
-import { Link } from "@reach/router";
+import { Link as LinkRouter } from "@reach/router";
+import { fadeIn } from '../../animations/animation'
 
-export const NavBarContainer = styled.div`
-  padding: 20px 0px;
-  display: flex;
-  justify-content: space-between;
+export const Nav = styled.nav`
   align-items: center;
-  list-style: none;
-`;
+  background: var(--contrast-color);
+  bottom: 0;
 
-export const NavBar = styled.div`
-  background-color: var(--contrast-color);
-  padding: 0 35%;
+  left: 0;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
 `;
+export const NavContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 25%;
+`
 
-export const To = styled(Link)`
+export const Link = styled(LinkRouter)`
+  align-items: center;
+  color: white;
+  display: inline-flex;
+  height: 100%;
+  justify-content: center;
   text-decoration: none;
-  color: var(--white-color);
+  width: 100%;
+  &[aria-current] {
+    color: #000;
+    &:after {
+      ${fadeIn({ time: "0.5s" })};
+      content: "·";
+      position: absolute;
+      bottom: 0;
+      font-size: 34px;
+      line-height: 20px;
+    }
+  }
 `;

@@ -1,12 +1,14 @@
 import React from "react";
+import { CategoriesContainer } from "./styles";
+
 import Section from "../Section/index";
 
 export default function index({ sections }) {
   return (
-    <div>
+    <CategoriesContainer>
       {sections.map(({ name, image }) => (
         <Section name={name} image={image} />
       ))}
-    </div>
+    </CategoriesContainer>
   );
 }

@@ -40,9 +40,19 @@ export default function App() {
             margin: 0;
             padding: 0;
           }
+
+          .o-header {
+            background-color: inherit;
+            position: sticky;
+            top: 0;
+            z-index: var(--zIndex-header);
+            max-height: var(--search-size-mx-h);
+          }
         `}
       />
-      <Header />
+      <div className="o-header">
+        <Header />
+      </div>
       <Router>
         <Categories path="/" />
         <Catalogue path="/catalogue" />

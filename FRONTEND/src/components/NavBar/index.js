@@ -1,20 +1,14 @@
 import React from "react";
-import { NavBarContainer, To, NavBar } from "./styles";
+import { Nav, Link, NavContainer } from "./styles";
 
 export default function index() {
   return (
-    <NavBar>
-      <NavBarContainer>
-        <li>
-          <To to="/">Categorias</To>
-        </li>
-        <li>
-          <To to="/catalogue">Catalogo</To>
-        </li>
-        <li>
-          <To to="/cart">Carrito</To>
-        </li>
-      </NavBarContainer>
-    </NavBar>
+    <Nav>
+      <NavContainer>
+        <Link to="/">Categorias</Link>
+        <Link to="/Catalogue">Catalogo</Link>
+        <Link to="/cart">Carrito</Link>
+      </NavContainer>
+    </Nav>
   );
 }
