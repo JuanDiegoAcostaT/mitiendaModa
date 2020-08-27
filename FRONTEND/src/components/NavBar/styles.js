@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Link as LinkRouter } from "@reach/router";
-import { fadeIn } from '../../animations/animation'
+import { fadeIn } from "../../animations/animation";
 
 export const Nav = styled.nav`
   align-items: center;
@@ -13,12 +13,15 @@ export const Nav = styled.nav`
   right: 0;
   width: 100%;
   z-index: 1000;
+  -webkit-box-shadow: 0px 10px 72px 19px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 10px 72px 19px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 10px 72px 19px rgba(0, 0, 0, 0.75);
 `;
 export const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 20px 25%;
-`
+`;
 
 export const Link = styled(LinkRouter)`
   align-items: center;

@@ -1,9 +1,14 @@
 import React from "react";
+import useCategories from '../../Hooks/useCategories'
+
+import Catalogue from "../../components/Catalogue/index";
 
 export default function index() {
+  const { categories } = useCategories();
+
   return (
-    <div>
-      <h1>This is a Catalogue Page</h1>
-    </div>
+    <>
+      <Catalogue categories={categories} />
+    </>
   );
 }

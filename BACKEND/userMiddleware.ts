@@ -1,10 +1,10 @@
-import { Context } from "https://deno.land/x/oak@v5.0.0/mod.ts";
+import { Context } from "http://deno.land/x/oak/mod.ts";
 import { validateJwt } from "https://deno.land/x/djwt/validate.ts"
 import { users, User } from "./users.ts";
 
 const userMiddleware = async (ctx: Context, next: Function) => {
   // Get JWT from request if available
-  const { value = {} } = await ctx.request.body();
+  const { value = {} } = await ctx.request.body();
   let {jwt} = value
   
   if (!jwt) {
@@ -15,7 +15,7 @@ const userMiddleware = async (ctx: Context, next: Function) => {
 
   if (jwt) {
     // Validate JWT and if it is invalid delete from cookie
-    const data: any = await validateJwt(jwt);
+    const data: any = await validateJwt(jwt, Deno.env.get('JWT_KEY') || '');
     
     if (!data.isValid || data.isExpired) {
       ctx.cookies.delete('jwt');

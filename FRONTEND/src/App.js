@@ -1,13 +1,16 @@
 import React from "react";
 import { Router } from "@reach/router";
 import { Global, css } from "@emotion/core";
+import { UserContextProvider } from "./context/UserContext";
 
 import Header from "./components/Header/index";
 import NavBar from "./components/NavBar/index";
-
 import Cart from "./pages/Cart";
 import Catalogue from "./pages/Catalogue";
 import Categories from "./pages/Categories";
+import Products from "./pages/Products/index";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 export default function App() {
   return (
@@ -18,7 +21,7 @@ export default function App() {
 
           :root {
             --main-color: #6722c2;
-            --secondary--color: #461782;
+            --secondary-color: #461782;
             --contrast-color: #230c42;
             --light-color: #9f25cf;
 
@@ -32,6 +35,15 @@ export default function App() {
             padding: 0;
           }
 
+          .container {
+            background: #fefefe;
+            height: 100vh;
+            margin: 0 auto;
+            max-width: 600px;
+            overscroll-behavior: none;
+            width: 100%;
+          }
+
           html {
             margin: 0;
             padding: 0;
@@ -43,22 +55,29 @@ export default function App() {
 
           .o-header {
             background-color: inherit;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: var(--zIndex-header);
-            max-height: var(--search-size-mx-h);
+            z-index: 1;
+            width: 100%;
           }
         `}
       />
-      <div className="o-header">
-        <Header />
-      </div>
-      <Router>
-        <Categories path="/" />
-        <Catalogue path="/catalogue" />
-        <Cart path="/cart" />
-      </Router>
-      <NavBar />
+      <UserContextProvider>
+        <div className="o-header">
+          <Header />
+        </div>
+        <div className="container">
+          <Router>
+            <Categories path="/" />
+            <Catalogue path="/catalogue" />
+            <Products path="/catalogue/product/:id" />
+            <Cart path="/cart" />
+            <Login path="/login" />
+            <Register path="/register" />
+          </Router>
+        </div>
+        <NavBar />
+      </UserContextProvider>
     </>
   );
 }

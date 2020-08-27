@@ -6,7 +6,7 @@ export default function index() {
     <Nav>
       <NavContainer>
         <Link to="/">Categorias</Link>
-        <Link to="/Catalogue">Catalogo</Link>
+        <Link to="/catalogue">Catalogo</Link>
         <Link to="/cart">Carrito</Link>
       </NavContainer>
     </Nav>

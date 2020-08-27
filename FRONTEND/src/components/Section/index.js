@@ -1,10 +1,12 @@
 import React from "react";
 
-export default function index({ image, name }) {
+import Products from "../Products/index";
+
+export default function index({ image, products = [] }) {
   return (
     <div  className="">
-      <h1>{name}</h1>
       <img src={`https://api.tissini.app/${image}`} alt="" />
+      <Products products={products} />
     </div>
   );
 }
