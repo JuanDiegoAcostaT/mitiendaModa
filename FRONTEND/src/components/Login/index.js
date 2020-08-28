@@ -35,12 +35,12 @@ export default function Login({ onLogin, navigate }) {
 
   return (
     <LoginFormContainer>
-      {isError && <strong>User or Password are invalid.</strong>}
-      {isLoginLoading && <strong>Checking Credentials....</strong>}
+      {isError && <strong>Usuario o Contraseña invalidos.</strong>}
+      {isLoginLoading && <strong>Validando Credenciales....</strong>}
       {!isLoginLoading && (
         <LoginContainer>
           <LoginForm onSubmit={handleSubmit}>
-            <label htmlFor="username">User</label>
+            <label htmlFor="username">Usuario</label>
             <LoginInput
               id="username"
               required
@@ -49,7 +49,7 @@ export default function Login({ onLogin, navigate }) {
               placeholder="username"
               value={username}
             ></LoginInput>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Contraseña</label>
             <LoginInput
               id="password"
               required
@@ -58,8 +58,8 @@ export default function Login({ onLogin, navigate }) {
               placeholder="password"
               value={password}
             ></LoginInput>
-            <ButtonComponent>Login</ButtonComponent>
-            {isLogged && <p>you successfully logged in 💚</p>}
+            <ButtonComponent type="submit">Iniciar Sesión</ButtonComponent>
+            {isLogged && <p>Inciaste Sesión Satisfactoriamente. 💚</p>}
           </LoginForm>
         </LoginContainer>
       )}

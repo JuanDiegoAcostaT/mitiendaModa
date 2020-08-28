@@ -1,6 +1,6 @@
 const ENDPOINT = "http://localhost:4000";
 
-export default function getFavs({ jwt }) {
+export default function getCartItems({ jwt }) {
 
   const requestOptions = {
     method: "GET",
@@ -11,14 +11,14 @@ export default function getFavs({ jwt }) {
   }
 
   return (
-    fetch(`${ENDPOINT}/favs`, requestOptions )
+    fetch(`${ENDPOINT}/cart`, requestOptions )
       .then((res) => {
         if (!res.ok) throw new Error("Response is not Ok");
         return res.json();
       })
       .then((res) => {
-        const { favs } = res;
-        return favs;
+        const { cart } = res;
+        return cart;
       })
 
     )

@@ -22,7 +22,6 @@ export const SignNav = styled.div`
 export const Link = styled(LinkRouter)`
   text-decoration: none;
   color: white;
-  padding: 5%;
 `;
 
 export const Title = styled.h1`

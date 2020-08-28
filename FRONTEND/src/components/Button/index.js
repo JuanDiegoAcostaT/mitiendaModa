@@ -5,7 +5,7 @@ const ButtonComponent = ({ children, href }) => {
   return href ? (
     <LinkStyled to={href}>{children}</LinkStyled>
   ) : (
-    <Button>{children}</Button>
+    <Button type="submit">{children}</Button>
   );
 };
 

@@ -15,16 +15,16 @@ export default function index() {
     <GifButton onClick={handleClick}>LogOut</GifButton>
   ) : (
     <>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
+      <Link to="/login">Iniciar Sesión</Link>
+      <Link  style={{ paddingLeft: '10px' }} to="/register">Registrarse</Link>
     </>
   );
 
   return (
     <HeaderContainer>
-      <Title>Mi Tienda</Title>
+      <Title>Mi Tienda 🛒</Title>
       <SignNav>
-        <Match path="/:(catalogue|cart|)/:(login|register)">
+        <Match path="/:(catalogue/|1|2|4|5|6|8|10/|cart|)/:(login|register)">
           {(props) => (props.match ? null : content)}
         </Match>
       </SignNav>

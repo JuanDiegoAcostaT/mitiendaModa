@@ -1,12 +1,19 @@
 import React from "react";
-import {Link} from "@reach/router";
+import { Link } from "@reach/router";
+import { CatalogueItem } from "./styles";
+import { Helmet } from "react-helmet";
 
-export default function index({ image, id }) {
+export default function index({ image, id, name }) {
   return (
-    <div className="">
-      <Link to={`product/${id}`}>
-        <img src={`https://api.tissini.app/${image}`} />
-      </Link>
-    </div>
+    <>
+      <Helmet>
+        <title>Mi Tienda | {name}</title>
+      </Helmet>
+      <CatalogueItem>
+        <Link to={`product/${id}`}>
+          <img src={`https://api.tissini.app/${image}`} />
+        </Link>
+      </CatalogueItem>
+    </>
   );
 }

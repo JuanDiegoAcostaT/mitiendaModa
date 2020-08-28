@@ -46,7 +46,7 @@ export default function Register({ navigate }) {
                 }, 5000);
               })
               .catch(() => {
-                setFieldError("username", "This username is invalid");
+                setFieldError("usuario", "El usuario es invalido");
               });
           }}
         >
@@ -54,12 +54,12 @@ export default function Register({ navigate }) {
             <RegisterContainer>
               {registered ? (
                 <RegisterForm>
-                  <p>you successfully Registered in 💚</p>
-                  <small>in 5 seconds you will be redirected .....</small>{" "}
+                  <p>Te registraste Correctamente 💚</p>
+                  <small>En 5 segundos serás redirigido para que inicies Sesión .....</small>{" "}
                 </RegisterForm>
               ) : (
                 <RegisterForm>
-                  <label htmlFor="username">User</label>
+                  <label htmlFor="username">Usuario</label>
                   <RegisterInput
                     border={
                       errors.username ? "4px solid var(--theme-body-bg);" : "0"
@@ -72,7 +72,7 @@ export default function Register({ navigate }) {
                   ></RegisterInput>
                   <RegisterError name="username" component="small" />
 
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Contraseña</label>
                   <RegisterInput
                     required
                     border={
@@ -84,8 +84,8 @@ export default function Register({ navigate }) {
                     placeholder="Password..."
                   ></RegisterInput>
                   <RegisterError name="password" component="small" />
-                  <ButtonComponent disabled={isSubmitting} type="submit">
-                    Sign Up
+                  <ButtonComponent disabled={isSubmitting} type="submit" >
+                    Registrate
                   </ButtonComponent>
                 </RegisterForm>
               )}

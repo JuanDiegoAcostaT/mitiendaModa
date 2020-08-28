@@ -1,8 +1,8 @@
 import { RouterContext } from "https://deno.land/x/oak/mod.ts";
 import { hashSync, compareSync } from "https://deno.land/x/bcrypt@v0.2.1/mod.ts";
 import { makeJwt, setExpiration, Jose } from "https://deno.land/x/djwt@v0.9.0/create.ts";
-import { users, User } from './users.ts';
-import { favs } from './favs.ts'
+import {  User, users } from './users.ts';
+import { cart } from './cart.ts'
 
 
 const header: Jose = {
@@ -10,52 +10,52 @@ const header: Jose = {
   typ: 'JWT'
 };
 
-export const getFavs = async (ctx: RouterContext) => {
+export const getCart = async (ctx: RouterContext) => {
   const {username} = ctx.state.currentUser
   ctx.response.status = 200
-  ctx.response.body = { favs: favs[username] }
+  ctx.response.body = { cart: cart[username] }
 }
 
-export const deleteFav = async (ctx: RouterContext) => {
+export const deleteCart = async (ctx: RouterContext) => {
   const {id} = ctx.params
   const {username} = ctx.state.currentUser
-  favs[username] = favs[username].filter(
-    (favId : string) => favId !== id
+  cart[username] = cart[username].filter(
+    (cartId : string) => cartId !== id
   )
 
   console.log({
     idRemoved: id,
-    remainingFavs: favs[username],
+    remainingCarts: cart[username],
     username,
   })
 
-  ctx.response.body = { favs: favs[username] }
+  ctx.response.body = { cart: cart[username] }
   ctx.response.status = 200
 }
 
-export const postFav = async (ctx: RouterContext) => {
+export const postCart = async (ctx: RouterContext) => {
   const {id} = ctx.params
   const {username} = ctx.state.currentUser
 
-  const alreadyExist = favs[username].some(
-    (favId : string) => favId === id
+  const alreadyExist = cart[username].some(
+    (cartId : string) => cartId === id
   )
   if (!alreadyExist) {
-    favs[username].push(id)
+    cart[username].push(id)
   }
 
   console.log({
     alreadyExist,
-    favs: favs[username],
+    cart: cart[username],
     username,
   })
 
-  ctx.response.body = { favs: favs[username] }
+  ctx.response.body = { cart: cart[username] }
   ctx.response.status = 201
 }
 
 export const postLogin = async (ctx: RouterContext) => {
-  const { value } = await ctx.request.body();
+  const { value } = await ctx.response.body();
 
   const user: any = users.find((u: User) => u.username === value.username);
 
@@ -78,8 +78,8 @@ export const postLogin = async (ctx: RouterContext) => {
   }
 }
 
-export const postRegister = async (ctx: RouterContext) => {
-  const { value } = await ctx.request.body();
+export const postRegister = async (ctx: RouterContext)  => {
+  const { value  } = await ctx.response.body();
   const { username } = value
 
   const hashedPassword = hashSync(value.password);
@@ -90,14 +90,15 @@ export const postRegister = async (ctx: RouterContext) => {
   };
 
   // TODO: Check it doesn't exist yet
-  const alreadyExist = users.find(user => user.username === value.username)
-  if (alreadyExist) {
-    ctx.response.status = 409
-  } else {
-    users.push(user);
-    // initialize the user favs
-    favs[value.username] = [];
-    ctx.response.status = 201
-  }
+  // const alreadyExist = users.find(user => user.username === value.username)
+
+  // if (alreadyExist) {
+  //   ctx.response.status = 409
+  // } else {
+  //   users.push(user);
+  //   // initialize the user cart
+  //   cart[value.username] = [];
+  //   ctx.response.status = 201
+  // }
 
 }

@@ -6,9 +6,9 @@ import * as flags from 'https://deno.land/std/flags/mod.ts'
 import { userMiddleware } from "./userMiddleware.ts"
 import { authMiddleware } from "./authMiddleware.ts"
 import {
-  getFavs,
-  deleteFav,
-  postFav,
+  getCart,
+  deleteCart,
+  postCart,
   postLogin,
   postRegister
 } from "./routes.ts"
@@ -25,9 +25,9 @@ const router = new Router()
 app.use(userMiddleware, oakCors())
 
 router
-  .get('/favs', authMiddleware, getFavs)
-  .delete("/favs/:id", authMiddleware, deleteFav)
-  .post("/favs/:id", authMiddleware, postFav)
+  .get('/cart', authMiddleware, getCart)
+  .delete("/cart/:id", authMiddleware, deleteCart)
+  .post("/cart/:id", authMiddleware, postCart)
   .post("/register", postRegister)
   .post("/login", postLogin)
 

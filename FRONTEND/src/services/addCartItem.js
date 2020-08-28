@@ -1,6 +1,6 @@
 const ENDPOINT = "http://localhost:4000";
 
-export default function addFav({ id, jwt }) {
+export default function addCartItem({ id, jwt }) {
   const requestOptions = {
     method: "POST",
     headers: {
@@ -9,13 +9,13 @@ export default function addFav({ id, jwt }) {
     body: JSON.stringify({ jwt }),
   };
 
-  return fetch(`${ENDPOINT}/favs/${id}`, requestOptions)
+  return fetch(`${ENDPOINT}/cart/${id}`, requestOptions)
     .then((res) => {
       if (!res.ok) throw new Error("Response is not Ok");
       return res.json();
     })
     .then((res) => {
-      const { favs } = res;
-      return favs;
+      const { cart } = res;
+      return cart;
     });
 }

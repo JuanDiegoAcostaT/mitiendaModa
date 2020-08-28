@@ -6,7 +6,7 @@ export const LoginFormContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10% 0;
-  color: var(--white-color);
+  color: var(--black-color);
 `;
 
 export const LoginContainer = styled.div`

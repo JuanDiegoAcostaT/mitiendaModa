@@ -11,6 +11,7 @@ import Categories from "./pages/Categories";
 import Products from "./pages/Products/index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Error from './pages/Error/index';
 
 export default function App() {
   return (
@@ -69,11 +70,12 @@ export default function App() {
         <div className="container">
           <Router>
             <Categories path="/" />
-            <Catalogue path="/catalogue" />
-            <Products path="/catalogue/product/:id" />
+            <Catalogue path="/catalogue/:i" />
+            <Products path="/catalogue/:i/product/:id" />
             <Cart path="/cart" />
             <Login path="/login" />
             <Register path="/register" />
+            <Error default />
           </Router>
         </div>
         <NavBar />

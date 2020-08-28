@@ -1,5 +1,6 @@
 import React from "react";
-import { ProductsComponent ,ProducstContainer } from "./styles";
+import { ProductsComponent, ProducstContainer } from "./styles";
+import Add from "../Add/index";
 
 export default function index({ products = [] }) {
   return (
@@ -11,9 +12,10 @@ export default function index({ products = [] }) {
             src={`https://api.tissini.app/${product.image.url}`}
             alt=""
           />
+          <Add id={`${product.name}.......${product.price}`} />
           <p>{product.name}</p>
           <p>{product.categories.category}</p>
-          <p>{product.price}</p>
+          <p>$ {product.price}</p>
         </ProductsComponent>
       ))}
     </ProducstContainer>

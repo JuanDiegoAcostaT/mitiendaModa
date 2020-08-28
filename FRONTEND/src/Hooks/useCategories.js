@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import getCategories from "../services/getCategories";
 
-export default function useCategories() {
+export default function useCategories({ i }) {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const categoryToUse = i || 1
+
   useEffect(() => {
     setLoading(true);
-    getCategories().then((categories) => {
+    getCategories({ i  : categoryToUse}).then((categories) => {
       setCategories(categories);
       setLoading(false);
     });
-  }, [setCategories]);
+  }, [setCategories, i]);
 
   return { loading, categories };
 }

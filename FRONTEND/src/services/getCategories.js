@@ -1,12 +1,11 @@
-const API_URL = `https://api.tissini.app/api/v2/categories/1/products`;
 
 const fromApiResponseToGifs = (apiResponse) => {
   const { categories = [] } = apiResponse;
   const { categories: categories__ } = categories
   if (Array.isArray(categories__)) {
     const categories = categories__.map(category => {
-      const { id, image } = category
-      return { id, image }
+      const { id, image , name} = category
+      return { id, image, name }
     })
     return categories
 
@@ -15,8 +14,8 @@ const fromApiResponseToGifs = (apiResponse) => {
 
 };
 
-export default function getSections() {
-  return fetch(API_URL)
+export default function getSections({ i }) {
+  return fetch(`https://api.tissini.app/api/v2/categories/${i}/products`)
     .then((res) => res.json())
     .then(fromApiResponseToGifs);
 }

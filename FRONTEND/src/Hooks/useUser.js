@@ -1,11 +1,11 @@
 import { useContext, useCallback, useState } from "react";
 import Context from "../context/UserContext";
 import loginService from "../services/login";
-import addFavService from "../services/addFav";
-import deleteFavService from '../services/deleteFav'
+import addCartItem from "../services/addCartItem";
+import deleteCartItem from '../services/deleteCartItem'
 
 export default function useUser() {
-  const { jwt, setJwt, favs, setFavs } = useContext(Context);
+  const { jwt, setJwt, cartItem , setCartItems } = useContext(Context);
   const [state, setstate] = useState({
     loading: false,
     error: false,
@@ -35,22 +35,22 @@ export default function useUser() {
     [setJwt]
   );
 
-  const addFav = useCallback(
+  const addCart = useCallback(
     ({ id }) => {
-      addFavService({ id, jwt })
-        .then((favs) => setFavs(favs))
+      addCartItem({ id, jwt })
+        .then((cart) => setCartItems(cart))
         .catch((err) => console.log(err));
     },
-    [jwt, setFavs]
+    [jwt, setCartItems]
   );
   
-  const deleteFav = useCallback(
+  const deleteCart = useCallback(
     ({ id }) => {
-      deleteFavService({ id, jwt })
-        .then((favs) => setFavs(favs))
+      deleteCartItem({ id, jwt })
+        .then((cart) => setCartItems(cart))
         .catch((err) => console.log(err));
     },
-    [jwt, setFavs]
+    [jwt, setCartItems]
   );
 
 
@@ -60,9 +60,9 @@ export default function useUser() {
   }, [setJwt]);
 
   return {
-    deleteFav,
-    addFav,
-    favs,
+    addCart,
+    deleteCart,
+    cartItem,
     isLogged: Boolean(jwt),
     isLoginLoading: state.loading,
     isError: state.error,
