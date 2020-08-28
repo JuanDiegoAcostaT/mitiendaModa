@@ -11,7 +11,7 @@ export default function index({ image, id, name }) {
       </Helmet>
       <CatalogueItem>
         <Link to={`product/${id}`}>
-          <img src={`https://api.tissini.app/${image}`} />
+          <img  src={`https://api.tissini.app/${image}`} />
         </Link>
       </CatalogueItem>
     </>

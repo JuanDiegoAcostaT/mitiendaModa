@@ -9,7 +9,7 @@ function Modal({ children, onClose }) {
         <ModalButton onClick={onClose}>
           ❌
         </ModalButton>
-        <p>Please get login for adding favorites gifs to list.</p>
+        <p>Por favor Incia Sesión , para empezar a agregar elementos al carrito</p>
         {children}
       </ModalContent>
     </ModalComponent>

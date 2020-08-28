@@ -3,13 +3,14 @@ import styled from "@emotion/styled";
 export const CartItem = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 15% 10% ;
 `;
 
 export const Title = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 40px;
+  padding: 10% 14% ;
 `;
 
 export const Button = styled.button`

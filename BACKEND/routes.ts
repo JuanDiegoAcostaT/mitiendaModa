@@ -55,7 +55,7 @@ export const postCart = async (ctx: RouterContext) => {
 }
 
 export const postLogin = async (ctx: RouterContext) => {
-  const { value } = await ctx.response.body();
+  const { value } = await ctx.request.body();
 
   const user: any = users.find((u: User) => u.username === value.username);
 
@@ -78,11 +78,11 @@ export const postLogin = async (ctx: RouterContext) => {
   }
 }
 
-export const postRegister = async (ctx: RouterContext)  => {
-  const { value  } = await ctx.response.body();
-  const { username } = value
+export const postRegister = async (ctx: RouterContext) => {
+  const { value } = await ctx.request.body();
+  const {username, password} = value
 
-  const hashedPassword = hashSync(value.password);
+  const hashedPassword = hashSync(password);
 
   const user: User = {
     username,
@@ -90,15 +90,14 @@ export const postRegister = async (ctx: RouterContext)  => {
   };
 
   // TODO: Check it doesn't exist yet
-  // const alreadyExist = users.find(user => user.username === value.username)
-
-  // if (alreadyExist) {
-  //   ctx.response.status = 409
-  // } else {
-  //   users.push(user);
-  //   // initialize the user cart
-  //   cart[value.username] = [];
-  //   ctx.response.status = 201
-  // }
+  const alreadyExist = users.find(user => user.username === username)
+  if (alreadyExist) {
+    ctx.response.status = 409
+  } else {
+    users.push(user);
+    // initialize the user cart
+    cart[username] = [];
+    ctx.response.status = 201
+  }
 
 }

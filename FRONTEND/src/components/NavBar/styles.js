@@ -41,6 +41,7 @@ export const Link = styled(LinkRouter)`
   justify-content: center;
   text-decoration: none;
   width: 100%;
+  padding : 0 3%;
   &[aria-current] {
     &:after {
       ${fadeIn({ time: "0.5s" })};

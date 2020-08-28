@@ -7,9 +7,13 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   -webkit-box-shadow: 0px -10px 72px 19px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px -10px 72px 19px rgba(0, 0, 0, 0.75);
   box-shadow: 0px -10px 72px 19px rgba(0, 0, 0, 0.75);
+  @media screen and (max-width: 425px) {
+    font-size : 15px;
+  }
 `;
 
 export const SignNav = styled.div`
@@ -24,7 +28,7 @@ export const Link = styled(LinkRouter)`
   color: white;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.h3`
   padding-left: 25px;
 `;
 

@@ -17,7 +17,7 @@ export const Roller = styled.div`
   width: 80px;
   height: 80px;
   text-align: center;
-  padding : 200px 250px;
+  padding : 35% 40%;
 `;
 
 const RollerCommon = css`

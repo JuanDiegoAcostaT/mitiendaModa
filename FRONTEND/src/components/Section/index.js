@@ -1,12 +1,12 @@
 import React from "react";
-
+import { SectionContainer } from './styles'
 import Products from "../Products/index";
 
 export default function index({ image, products = [] }) {
   return (
-    <div  className="">
-      <img src={`https://api.tissini.app/${image}`} alt="" />
+    <SectionContainer>
+      <img width="100%" src={`https://api.tissini.app/${image}`} alt="" />
       <Products products={products} />
-    </div>
+    </SectionContainer>
   );
 }

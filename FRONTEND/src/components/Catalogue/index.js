@@ -6,7 +6,7 @@ import CatalogueItem from "../CatalogueItem/index";
 export default function index({ categories }) {
   return (
     <CatalogueContainer>
-      <h2>
+      <h2 style={{ textAlign: "center" }}>
         Selecciona tu Categoria Favorita y mira los productos que ofrecemos.
       </h2>
       {categories.map(({ id, image, name }) => (
